@@ -1,0 +1,25 @@
+{
+  "name": "loba",
+  "version": "0.1.0",
+  "description": "Tiny interpreter",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oesukam/loba.git"
+  },
+  "keywords": [
+    "loba",
+    "interpreter",
+    "compiler",
+    "tokenizer"
+  ],
+  "author": "Olivier M. Esuka oesukam@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oesukam/loba/issues"
+  },
+  "homepage": "https://github.com/oesukam/loba#readme"
+}
