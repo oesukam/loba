@@ -8,7 +8,7 @@ cache:
 
 branches:
   only:
-    - develop
+    - master
 
 install:
   - npm install
