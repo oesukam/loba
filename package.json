@@ -2,9 +2,15 @@
   "name": "loba",
   "version": "0.1.0",
   "description": "Tiny interpreter",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "jest"
+    "build": "tsc",
+    "test": "jest --watchAll --coverage",
+    "test:ci": "jest --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -21,5 +27,12 @@
   "bugs": {
     "url": "https://github.com/oesukam/loba/issues"
   },
-  "homepage": "https://github.com/oesukam/loba#readme"
+  "homepage": "https://github.com/oesukam/loba#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "coveralls": "^3.1.0",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5"
+  }
 }
