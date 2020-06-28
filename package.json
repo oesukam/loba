@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test:ci": "jest --coverage",
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
