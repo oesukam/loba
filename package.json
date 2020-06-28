@@ -8,8 +8,9 @@
   ],
   "scripts": {
     "build": "tsc",
+    "test": "jest --watchAll --coverage",
     "test:ci": "jest --coverage",
-    "test": "jest --watchAll"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/oesukam/loba#readme",
   "devDependencies": {
     "@types/jest": "^26.0.3",
+    "coveralls": "^3.1.0",
     "jest": "^26.1.0",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
