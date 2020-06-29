@@ -1,16 +1,21 @@
 import { isWhitespace } from './tokenTypes/isWhitespace';
 
-function tokenizer(text: string): Array<string> {
-  const tokens: Array<string> = [];
+interface IToken {
+  name?: string;
+  value: string | number;
+}
+
+function tokenizer(text: string): IToken[] {
+  const tokens: IToken[] = [];
   let cursor = 0;
 
   while (cursor < text.length) {
     const input = text[cursor];
     cursor++;
-    if (isWhitespace(input)) {
+    if (isWhitespace.test(input)) {
       continue;
     }
-    tokens.push(text[cursor]);
+    tokens.push({ value: text[cursor] });
   }
 
   return tokens;

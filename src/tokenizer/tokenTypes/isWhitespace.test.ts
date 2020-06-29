@@ -28,7 +28,7 @@ const cases: ICase[] = [
 jestCases(
   'tokenTypes - isWhitespace',
   ({ input, output }: ICase) => {
-    expect(isWhitespace(input)).toBe(output);
+    expect(isWhitespace.test(input)).toBe(output);
   },
   cases,
 );
