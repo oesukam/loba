@@ -2,7 +2,7 @@ import { isWhitespace } from './tokenTypes/isWhitespace';
 import { isParenthesis } from './tokenTypes/isParenthesis';
 
 interface IToken {
-  name?: string;
+  type?: string;
   value: string | number;
 }
 
@@ -18,11 +18,11 @@ function tokenizer(text: string): IToken[] {
     }
 
     if (isParenthesis.test(value)) {
-      tokens.push({ value, name: isParenthesis.name });
+      tokens.push({ value, type: isParenthesis.name });
       continue;
     }
 
-    tokens.push({ value: text[cursor] });
+    tokens.push({ value });
   }
 
   return tokens;
