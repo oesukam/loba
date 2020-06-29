@@ -3,38 +3,65 @@ import { tokenizer } from './index';
 
 interface ICase {
   input: string;
-  output: number;
+  outputLength: number;
   name?: string;
 }
 
 const cases: ICase[] = [
   {
     input: 'token',
-    output: 5,
+    outputLength: 5,
   },
   {
     input: 'to en',
-    output: 4,
+    outputLength: 4,
   },
   {
     input: ' ',
-    output: 0,
+    outputLength: 0,
   },
   {
     input: '()',
-    output: 2,
+    outputLength: 2,
+  },
+  {
+    input: '1',
+    outputLength: 1,
+  },
+  {
+    input: '111',
+    outputLength: 1,
   },
 ].map((data) => ({
   ...data,
-  name: `'${data.input}' generate ${data.output} token(s)`,
+  name: `'${data.input}' generate ${data.outputLength} token(s)`,
 }));
 
 jestCases(
   'tokenizer',
-  ({ input, output }: ICase) => {
+  ({ input, outputLength }: ICase) => {
     const tokens = tokenizer(input);
 
-    expect(tokens.length).toBe(output);
+    expect(tokens.length).toBe(outputLength);
   },
   cases,
 );
+
+describe('tokenizer - snapshots', () => {
+  test('should match tokens', () => {
+    expect(tokenizer('to 1')).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "value": "t",
+        },
+        Object {
+          "value": "o",
+        },
+        Object {
+          "type": "NUMBER",
+          "value": "1",
+        },
+      ]
+    `);
+  });
+});
