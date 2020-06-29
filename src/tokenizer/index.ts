@@ -1,4 +1,5 @@
 import { isWhitespace } from './tokenTypes/isWhitespace';
+import { isParenthesis } from './tokenTypes/isParenthesis';
 
 interface IToken {
   name?: string;
@@ -10,11 +11,17 @@ function tokenizer(text: string): IToken[] {
   let cursor = 0;
 
   while (cursor < text.length) {
-    const input = text[cursor];
+    const value = text[cursor];
     cursor++;
-    if (isWhitespace.test(input)) {
+    if (isWhitespace.test(value)) {
       continue;
     }
+
+    if (isParenthesis.test(value)) {
+      tokens.push({ value, name: isParenthesis.name });
+      continue;
+    }
+
     tokens.push({ value: text[cursor] });
   }
 

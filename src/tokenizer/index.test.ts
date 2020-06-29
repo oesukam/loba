@@ -20,6 +20,10 @@ const cases: ICase[] = [
     input: ' ',
     output: 0,
   },
+  {
+    input: '()',
+    output: 2,
+  },
 ].map((data) => ({
   ...data,
   name: `'${data.input}' generate ${data.output} token(s)`,
