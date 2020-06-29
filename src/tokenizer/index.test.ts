@@ -1,9 +1,37 @@
+import jestCases from 'jest-in-case';
 import { tokenizer } from './index';
 
-describe('tokenizer', () => {
-  test('should return 2 tokens', () => {
-    const tokens = tokenizer('ad');
+interface ICase {
+  input: string;
+  output: number;
+  name?: string;
+}
 
-    expect(tokens.length).toBe(2);
-  });
-});
+const cases: ICase[] = [
+  {
+    input: 'token',
+    output: 5,
+  },
+  {
+    input: 'to en',
+    output: 4,
+  },
+  {
+    input: ' ',
+    output: 0,
+  },
+].map((data) => ({
+  ...data,
+  name: `'${data.input}' generate ${data.output} token(s)`,
+}));
+
+jestCases(
+  'tokenizer',
+  ({ input, output }: ICase) => {
+    const tokens = tokenizer(input);
+    console.log(tokenizer);
+
+    expect(tokens.length).toBe(output);
+  },
+  cases,
+);
