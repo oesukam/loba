@@ -29,7 +29,6 @@ jestCases(
   'tokenizer',
   ({ input, output }: ICase) => {
     const tokens = tokenizer(input);
-    console.log(tokenizer);
 
     expect(tokens.length).toBe(output);
   },
