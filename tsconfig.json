@@ -5,6 +5,7 @@
     "strict": true,
     "declaration": true,
     "sourceMap": true,
+    "esModuleInterop": true,
     "baseUrl": "./src"
   },
   "include": ["src/**/*.ts"],
