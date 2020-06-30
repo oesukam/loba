@@ -1,6 +1,6 @@
-import { isWhitespace } from './tokenTypes/isWhitespace';
-import { isParenthesis } from './tokenTypes/isParenthesis';
-import { isNumber } from './tokenTypes/isNumber';
+import { isWhitespace } from './identifies/isWhitespace';
+import { isParenthesis } from './identifies/isParenthesis';
+import { isNumber } from './identifies/isNumber';
 
 interface IToken {
   type?: string;
