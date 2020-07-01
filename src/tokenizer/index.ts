@@ -3,6 +3,7 @@ import { isParenthesis } from './tokenTypes/isParenthesis';
 import { isNumber } from './tokenTypes/isNumber';
 import { isOperator } from './tokenTypes/isOperator';
 import { isLetter } from './tokenTypes/isLetter';
+import { isQuoteString } from './tokenTypes/isQuoteString';
 
 interface IToken {
   type?: string;
@@ -45,6 +46,16 @@ function tokenizer(text: string): IToken[] {
       }
 
       tokens.push({ value, type: isLetter.name });
+      continue;
+    }
+
+    if (isQuoteString.test(value)) {
+      while (!isQuoteString.test(text[++cursor]) && cursor < text.length) {
+        value += text[cursor];
+      }
+
+      tokens.push({ value, type: isQuoteString.name });
+      cursor++;
       continue;
     }
 
