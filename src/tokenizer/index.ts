@@ -1,6 +1,7 @@
 import { isWhitespace } from './identifies/isWhitespace';
 import { isParenthesis } from './identifies/isParenthesis';
 import { isNumber } from './identifies/isNumber';
+import { isOperator } from './identifies/isOperator';
 
 interface IToken {
   type?: string;
@@ -29,6 +30,11 @@ function tokenizer(text: string): IToken[] {
       }
 
       tokens.push({ value, type: isNumber.name });
+      continue;
+    }
+
+    if (isOperator.test(value)) {
+      tokens.push({ value, type: isOperator.name });
       continue;
     }
 
