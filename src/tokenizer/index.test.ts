@@ -10,11 +10,11 @@ interface ICase {
 const cases: ICase[] = [
   {
     input: 'token',
-    outputLength: 5,
+    outputLength: 1,
   },
   {
     input: 'to en',
-    outputLength: 4,
+    outputLength: 2,
   },
   {
     input: ' ',
@@ -51,15 +51,18 @@ jestCases(
   cases,
 );
 
-describe('tokenizer - snapshots', () => {
+describe('tokenizer', () => {
+  test('should throw an error', () => {
+    const error = new Error(`Unrecognize character _`);
+    expect(() => tokenizer('_')).toThrow(error);
+  });
+
   test('should match tokens', () => {
     expect(tokenizer('to 1')).toMatchInlineSnapshot(`
       Array [
         Object {
+          "type": "LETTER",
           "value": "t",
-        },
-        Object {
-          "value": "o",
         },
         Object {
           "type": "NUMBER",
