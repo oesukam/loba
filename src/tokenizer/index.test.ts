@@ -32,6 +32,10 @@ const cases: ICase[] = [
     input: '111',
     outputLength: 1,
   },
+  {
+    input: '+',
+    outputLength: 1,
+  },
 ].map((data) => ({
   ...data,
   name: `'${data.input}' generate ${data.outputLength} token(s)`,
