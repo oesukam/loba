@@ -1,7 +1,8 @@
-import { isWhitespace } from './identifies/isWhitespace';
-import { isParenthesis } from './identifies/isParenthesis';
-import { isNumber } from './identifies/isNumber';
-import { isOperator } from './identifies/isOperator';
+import { isWhitespace } from './tokenTypes/isWhitespace';
+import { isParenthesis } from './tokenTypes/isParenthesis';
+import { isNumber } from './tokenTypes/isNumber';
+import { isOperator } from './tokenTypes/isOperator';
+import { isLetter } from './tokenTypes/isLetter';
 
 interface IToken {
   type?: string;
@@ -19,6 +20,11 @@ function tokenizer(text: string): IToken[] {
       continue;
     }
 
+    if (isOperator.test(value)) {
+      tokens.push({ value, type: isOperator.name });
+      continue;
+    }
+
     if (isParenthesis.test(value)) {
       tokens.push({ value, type: isParenthesis.name });
       continue;
@@ -33,12 +39,16 @@ function tokenizer(text: string): IToken[] {
       continue;
     }
 
-    if (isOperator.test(value)) {
-      tokens.push({ value, type: isOperator.name });
+    if (isLetter.test(value)) {
+      while (isLetter.test(text[++cursor]) && cursor < text.length) {
+        value += text[cursor];
+      }
+
+      tokens.push({ value, type: isLetter.name });
       continue;
     }
 
-    tokens.push({ value });
+    throw new Error(`Unrecognize character ${value}`);
   }
 
   return tokens;
